@@ -1,4 +1,4 @@
-package java_basics;
+package misc;
 
 public class Car {
 	private String model;

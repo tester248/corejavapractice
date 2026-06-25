@@ -1,4 +1,4 @@
-package java_basics;
+package misc;
 
 public class Demo<T> {
 	private T data;

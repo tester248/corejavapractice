@@ -1,4 +1,4 @@
-package java_basics;
+package misc;
 
 public class Person implements Cloneable {
 	private String name; 

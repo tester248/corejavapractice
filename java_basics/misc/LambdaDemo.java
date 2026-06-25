@@ -1,4 +1,4 @@
-package java_basics;
+package misc;
 
 @FunctionalInterface
 interface Hello {

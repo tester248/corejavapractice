@@ -1,6 +1,6 @@
 package com.mmcoe.emp;
 
-import java_basics.Manager;
+import misc.Manager;
 
 public class TestEmployee {
 

@@ -1,4 +1,4 @@
-package java_basics;
+package misc;
 import java.util.function.*;
 
 
