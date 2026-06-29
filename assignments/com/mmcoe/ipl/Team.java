@@ -1,17 +1,17 @@
 package com.mmcoe.ipl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Team {
+	private static final int MAX_SQUAD = 15;
 	private String name;
 	private double budget;
-	private List<Player> squad;
+	private Player[] squad;
+	private int squadCount;
 
 	public Team(String name, double budget) {
 		this.name = name;
 		this.budget = budget;
-		this.squad = new ArrayList<Player>();
+		this.squad = new Player[MAX_SQUAD];
+		this.squadCount = 0;
 	}
 
 	public String getName() {
@@ -26,12 +26,17 @@ public class Team {
 		this.budget = budget;
 	}
 
-	public List<Player> getSquad() {
-		return squad;
+	public int getSquadCount() {
+		return squadCount;
+	}
+
+	public Player getPlayer(int index) {
+		return squad[index];
 	}
 
 	public void addPlayer(Player p) {
-		squad.add(p);
+		if (squadCount < MAX_SQUAD)
+			squad[squadCount++] = p;
 	}
 
 	public boolean canBid(double amount) {

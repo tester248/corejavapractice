@@ -1,12 +1,14 @@
 package com.mmcoe.ipl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Auction {
-    private List<Team> teams = new ArrayList<>();
-    private List<Player> players = new ArrayList<>();
+    private static final int MAX_TEAMS = 10;
+    private static final int MAX_PLAYERS = 100;
+    private Team[] teams = new Team[MAX_TEAMS];
+    private int teamCount = 0;
+    private Player[] players = new Player[MAX_PLAYERS];
+    private int playerCount = 0;
 
     private void addTeams(Scanner sc) {
         System.out.print("How many teams? ");
@@ -18,7 +20,11 @@ public class Auction {
             System.out.print("Team budget (in Cr): ");
             double budget = sc.nextDouble();
             sc.nextLine();
-            teams.add(new Team(name, budget));
+            if (teamCount >= MAX_TEAMS) {
+                System.out.println("Maximum number of teams reached.");
+                break;
+            }
+            teams[teamCount++] = new Team(name, budget);
         }
     }
 
@@ -34,16 +40,22 @@ public class Auction {
             System.out.print("Base price (in Cr): ");
             double base = sc.nextDouble();
             sc.nextLine();
-            players.add(new Player(name, role, base));
+            if (playerCount >= MAX_PLAYERS) {
+                System.out.println("Maximum number of players reached.");
+                break;
+            }
+            players[playerCount++] = new Player(name, role, base);
         }
     }
 
     private void runAuction(Scanner sc) {
         System.out.println("\n--- Starting Auction ---");
-        for (Player p : players) {
+        for (int pi = 0; pi < playerCount; pi++) {
+            Player p = players[pi];
             System.out.println("\nPlayer: " + p.getName() + " (" + p.getRole() + ") Base: ₹" + p.getBasePrice() + " Cr");
             boolean sold = false;
-            for (Team t : teams) {
+            for (int ti = 0; ti < teamCount; ti++) {
+                Team t = teams[ti];
                 System.out.print(t.getName() + " - buy? (y/n): ");
                 String ans = sc.nextLine();
                 if (ans.equalsIgnoreCase("y")) {
@@ -68,18 +80,21 @@ public class Auction {
 
     private void summary() {
         System.out.println("\n--- Auction Summary ---");
-        for (Team t : teams) {
+        for (int ti = 0; ti < teamCount; ti++) {
+            Team t = teams[ti];
             System.out.println(t.getName() + " | Budget left: ₹" + t.getBudget() + " Cr");
-            if (t.getSquad().isEmpty()) {
+            if (t.getSquadCount() == 0) {
                 System.out.println("  No players bought.");
             } else {
-                for (Player p : t.getSquad()) {
+                for (int si = 0; si < t.getSquadCount(); si++) {
+                    Player p = t.getPlayer(si);
                     System.out.println("  " + p.getName() + " (" + p.getRole() + ") – ₹" + p.getSoldPrice() + " Cr");
                 }
             }
         }
         System.out.println("\nUnsold players:");
-        for (Player p : players) {
+        for (int pi = 0; pi < playerCount; pi++) {
+            Player p = players[pi];
             if (!p.isSold()) {
                 System.out.println("  " + p.getName() + " (" + p.getRole() + ")");
             }
