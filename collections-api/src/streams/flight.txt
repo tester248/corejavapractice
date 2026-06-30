@@ -1,0 +1,10 @@
+101,AirIndia,Mumbai,Delhi
+102,IndiGo,Delhi,Bangalore
+103,SpiceJet,Bangalore,Mumbai
+104,AirIndia,Chennai,Delhi
+105,Vistara,Mumbai,Chennai
+106,IndiGo,Delhi,Mumbai
+107,AirAsia,Bangalore,Chennai
+108,Vistara,Delhi,Chennai
+109,AirIndia,Mumbai,Bangalore
+110,IndiGo,Chennai,Bangalore
