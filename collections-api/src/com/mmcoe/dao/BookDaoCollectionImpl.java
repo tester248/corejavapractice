@@ -1,7 +1,7 @@
 package com.mmcoe.dao;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import com.mmcoe.pojo.Book;
 
@@ -9,7 +9,7 @@ public class BookDaoCollectionImpl implements BookDao {
 	private List<Book> books;					
 	
 	public BookDaoCollectionImpl() {
-		books = new Vector<Book>();
+		books = new ArrayList<Book>();
 	}
 	@Override
 	public boolean save(Book b) {
@@ -46,7 +46,7 @@ public class BookDaoCollectionImpl implements BookDao {
 	}
 	@Override
 	public List<Book> findByPrice(double min, double max) {
-		List<Book> res = new Vector<Book>();
+		List<Book> res = new ArrayList<Book>();
 		for(Book b:books)
 		{
 			if(b.getPrice() >= min && b.getPrice() <= max)
