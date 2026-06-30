@@ -45,8 +45,13 @@ public class BookDaoCollectionImpl implements BookDao {
 		return false;
 	}
 	@Override
-	public List<Book> findMyPrice(double min, double max) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Book> findByPrice(double min, double max) {
+		List<Book> res = new Vector<Book>();
+		for(Book b:books)
+		{
+			if(b.getPrice() >= min && b.getPrice() <= max)
+				res.add(b);
+		}
+		return res;
 	}
 }

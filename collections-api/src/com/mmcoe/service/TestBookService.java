@@ -25,7 +25,7 @@ public class TestBookService {
 			e.printStackTrace();
 		}
 		
-		for(Book b:service.findMyPrice(200, 300))
+		for(Book b:service.findByPrice(200, 300))
 			System.out.println(b);
 		
 		try {
@@ -34,5 +34,7 @@ public class TestBookService {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		
+		service.listOrderByTitle().forEach(System.out::println);
 	}
 }

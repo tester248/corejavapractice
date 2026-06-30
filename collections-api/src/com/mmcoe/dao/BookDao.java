@@ -11,5 +11,5 @@ public interface BookDao {
 	
 	boolean delete(int isbn);
 	
-	List<Book> findMyPrice(double min, double max);
+	List<Book> findByPrice(double min, double max);
 }

@@ -14,4 +14,6 @@ public interface BookService {
 	boolean delete(int isbn) throws BookNotFoundException;
 	
 	List<Book> findByPrice(double min, double max);
+
+	List<Book> listOrderByTitle();
 }
